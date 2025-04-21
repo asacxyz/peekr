@@ -1,0 +1,33 @@
+type Query {
+    tasksByFilters(filters: [Filter]) : [Task]
+}
+
+type Task {
+    id: ID!
+    name: String!
+    owner: User!
+    status: TaskStatus!
+    createdAt: String!
+    completedAt: String
+}
+
+type User {
+    id: ID!
+    name: String!
+}
+
+enum TaskStatus {
+    NOT_INITIALIZED
+    COMPLETED
+}
+
+input Filter {
+    name: String!
+    operator: FilterOperator!
+    values: [String!]!
+}
+
+enum FilterOperator {
+    EQUALS
+    IN
+}
