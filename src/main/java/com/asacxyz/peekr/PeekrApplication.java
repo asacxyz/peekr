@@ -66,6 +66,9 @@ public class PeekrApplication implements CommandLineRunner {
 				  ('t1', 1, 1, now(), NULL),
 				  ('t2', 1, 2, now() - INTERVAL '1 day', NULL),
 				  ('t3', 1, 3, now() - INTERVAL '2 day', now() - INTERVAL '1 day');
+
+				CREATE INDEX idx_tasks_owner_id ON tasks(owner_id);
+				CREATE INDEX idx_tasks_status_id ON tasks(status_id);
 				""";
 		this.jdbcTemplate.execute(sql);
 	}
